@@ -1,0 +1,62 @@
+﻿@model List<FMFMVC.Models.Product>
+@{
+    ViewBag.Title = "فهرست";
+}
+
+<h2>لیست محصولات</h2>
+
+<table class="table">
+
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().CategoryId)
+        </th>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().CompanyId)
+        </th>
+
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().ModelName)
+        </th>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(x => x.FirstOrDefault().Description)
+        </th>
+        <th style="text-align:center;">
+            @Html.ActionLink("افزودن محصول", "Create", "Product", new { name = "" }, new { @class = "btn btn-default" })
+
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="@item.Id">
+
+            <td style="text-align:center;">
+                @item.Category.Name
+            </td>
+
+            <td style="text-align:center;">
+               
+                @item.Company.PersianName
+            </td>
+
+
+
+            <td style="text-align:center;">
+                @item.ModelName
+            </td>
+
+            <td style="text-align:center;">
+                @item.Description
+            </td>
+
+            <td style="text-align:center;">
+                @Html.ActionLink("ویرایش", "Edit", new { Id = item.Id }, new { @class = "btn btn-default" })
+
+                @Html.ActionLink("حذف", "Delete", new { code = item.Id }, new { onclick = "return confirm('آیا مطمئن فستید؟');", @class = "btn btn-default" })
+
+            </td>
+
+        </tr>
+    }
+</table>

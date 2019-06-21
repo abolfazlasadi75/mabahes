@@ -1,0 +1,38 @@
+﻿@model FMFMVC.Models.Product
+@{
+    ViewBag.Title = "ویرایش";
+}
+
+<h2>اصلاح محصول</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.CategoryId)
+        @Html.DropDownListFor(x => x.CategoryId, (SelectList)ViewBag.Categories, "نوع محصول را انتخاب کنید...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.CompanyId)
+        @Html.DropDownListFor(x => x.CompanyId, (SelectList)ViewBag.Companies, "شرکت مورد نظر را انتخاب کنید...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CompanyId)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.ModelName)
+        @Html.TextBoxFor(x => x.ModelName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ModelName)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.Description)
+        @Html.TextBoxFor(x => x.Description, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" value="ذخیره" class="btn btn-default" />
+    </div>
+}
+
